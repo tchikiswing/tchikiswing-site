@@ -1,0 +1,286 @@
+/* -- LA BASE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+html {font-size:100%;overflow-x: hidden;}
+if (screen.width < 900)
+    window.location.replace("mobile.css");
+
+
+
+
+/* -- COULEUR DU TEXTE SELECTIONNE ------------------------------------------------------------------------------------------------------------------------------------------------------ */
+::-moz-selection {color:#a52422;	text-shadow:none;}
+::selection {color:#a52422;	text-shadow:none;}
+/* -- Ca je sais pas à quoi ça correspond mais si je l'efface ça fout en l'air la mise en page alors on y touche pas -------------------------------------------------------------------- */
+*, 
+*:before, 
+*:after {box-sizing:border-box;}
+
+
+
+
+/* -- CORPS DU SITE --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+body {background: #f9bb36;	color:#000000;		list-style-type: none;		margin-top: 0;		margin-left:0;		margin-right:0;}
+/* -- Va impacter tout ce qui, dans le fichier HTML est contenu entre les balises <body></body> ! Mais ici, cela signifie juste qu'il n'y a pas de marges ------------------------------- */
+/* -- "background" désigne la couleur du fond et "color" designe la couleur du texte ---------------------------------------------------------------------------------------------------- */
+
+/* -- A propos des codes couleur -------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* -- Ici #f9bb36 est le code rvb de la couleur - chaque canal va de 00(noir) à 99 puis a b c d e f(blanc), ----------------------------------------------------------------------------- */
+/* -- Autres exemples -----	#000000 = noir ----------- #ffffff = blanc ---------- #222222 = gris foncé -------- #aaaaaa = gris clair ------------------------------------------------------------------------------------------------------------- */
+/* ------------------------ #ff0000 = rouge ---------- #00ff00 = vert ----------- #0000ff = bleu -------------- #f9bb36 = le jaune "Tchikiswing" ---------------------------------------- */
+/* -- Dans photoshop, on trouve ces codes dans l'outil de selection de couleur ---------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* -- FENETRE PRINCIPALE ---------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#content {}
+
+
+
+
+/* -- RECADRAGE DES PHOTOS SELON RESOLUTION DE L'ECRAN ---------------------------------------------------------------------------------------------------------------------------------- */
+img {max-width:100%;	height:auto;}
+/* -- Ici, img designe chaque image utilisée pour le site, que l'on retrouve dans le fichier HTML avec la balise <img src="fichier.jpg"> ------------------------------------------------ */
+
+
+
+
+/* -- MISE EN FORME DES LIENS ----------------------------------------------------------------------------------------------------------------------------------------------------------- */
+a {	text-decoration:none; color: #000;}
+/* -- Ici "a" designe la mise en forme de chaque balise de lien <a></a> que l'on retrouve sur le fichier HTML --------------------------------------------------------------------------- */
+/* -- Pour le site de Tchiki, les textes de liens sont ceux du MENU ainsi que les téléchargements et le mail dans la section CONTACT ---------------------------------------------------- */
+/* -- du coup, pour le site de Tchiki, on se contente de lui dire qu'on veut que les textes de liens soient blancs et non soulignés comme ça apparaitrait par défaut -------------------- */
+
+a:hover {color: #ffffff;}
+/* -- Cette ligne désigne avec l'action ":hover" le changement qui intervient quand la souris passe sur le texte de lien ---------------------------------------------------------------- */
+/* -- Sur le site de Tchiki, le lien en noir devient blanc quand on passe dessus, ce qui a son interet pour le menu --------------------------------------------------------------------- */
+
+
+
+
+/* -- LE BOUTON D'APPEL DU MENU --------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.boutonmenu {position:fixed; 	width:7%; 	margin-left:93%;	padding:8px;	z-index:18;		cursor:pointer;		transition:0.5s;}
+/* -- ".boutonmenu" designe la mise en page du cadre contenant le bouton rond qui ouvre le menu ----------------------------------------------------------------------------------------- */
+/* -- On le retrouve sur le fichier HTLM sous la forme <div class="boutonmenu"><img src="tchiki/menu.png"></div>---------------------------- -------------------------------------------- */
+/* -- Pour le site de Tchiki, on veut que le bouton soit fixe, que sa largeur soit de 7% de l'écran et que, donc il ait une marge gauche de 93% ----------------------------------------- */
+/* -- le "padding" désigne la marge interne au cadre, pour que le texte ne colle pas au bord. Ici 8 pixels ------------------------------------------------------------------------------ */
+/* -- "z-index" désigne l'ordre de superposition de cet élément --- 18 veut dire qu'il apparait au dessus de tous les autres ------------------------------------------------------------ */
+/* -- "cursor:pointer" designe que la souris se transforme en main, comme s'il y avait un lien ------------------------------------------------------------------------------------------ */
+/* -- "transition:0.5s" signifie que quand la souris passe sur le bouton, la transformation va durer 0.5 seconde ------------------------------------------------------------------------ */
+
+.boutonmenu:hover {padding:6px; transition:0.5s;}
+/* -- Avec l'action ":hover", on souhaite grossir en 0.5 secondes la taille du bouton --------------------------------------------------------------------------------------------------- */
+/* -- Comme on a appliqué un recadrage automatique des images, on simule le zoom en reduisant la marge interne "padding" de 8 à 6 pixels ------------------------------------------------ */
+
+.photomobile {display:none;}
+
+
+
+/* -- LE MENU --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.fondmenu{position: fixed;	background: #ffffff;	width:100%;		height:900px;	padding-top:14%;	z-index:17;}
+/* -- Décrit le cadre du menu qui apparait quand on a cliqué sur le bouton -------------------------------------------------------------------------------------------------------------- */
+/* -- Ce cadre est fixe, son fond est blanc et il occupe 100% de la largeur de l'écran -------------------------------------------------------------------------------------------------- */
+/* -- Cet élément a une hauteur de 900px histoire de faire la taille de l'écran ! Si on donne pas une "height", le cadre s'arretera à la fin de son contenu et c'est moche -------------- */
+/* -- "padding-top:14%" désigne la marge interne superieure ----------------------------------------------------------------------------------------------------------------------------- */
+
+.menu {position:relative;	width:20%;		margin-left:auto;	margin-right:auto;	padding-top:10px;	padding-left:10px;	padding-right:10px;}
+/* -- Décrit le menu à proprement parler dont la largeur est de 20% de l'écran et dont la position est relative à la balise ".fondmenu" ------------------------------------------------- */
+/* -- "margin-left" et "margin-right" désignent les marges sur les côtés ! En choisissant "auto" pour les 2, cela positionne notre menu au milieu de la page ---------------------------- */
+
+.menu .ico{position:relative;	float:center;	color: #000000;		margin-bottom: 10px;	padding-top: 5px;		padding-bottom:5px;		border-radius:20px;    
+			letter-spacing: 3px;	word-spacing: 5px;	text-align: center;		font-family: 'Reem Kufi', sans-serif;	font-size: 1.2rem; 		transition:0.5s;	z-index:18;}
+/* -- ".ico" est le cadre de chaque ligne du menu --------------------------------------------------------------------------------------------------------------------------------------- */
+/* -- Notons qu'il n'y a pas de couleur de fond pour que le cadre soit transparent tant que la souris ne passe pas dessus --------------------------------------------------------------- */
+/* -- "float:center" centre chaque icone ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/* -- On retrouve les éléments de Padding pour les marges internes, que le texte ne colle pas au bord du "bouton" ----------------------------------------------------------------------- */
+/* -- "margin-bottom" applique une marge externe inférieure pour séparer chaque icone de 10 pixels -------------------------------------------------------------------------------------- */
+/* -- Le "border-radius" désigne la courbure des bords du cadre ------------------------------------------------------------------------------------------------------------------------- */
+/* -- On trouve ensuite les éléments du texte specifiques au menu : taille, espacement des lettres et des mots, alignement centré, choix de la police ----------------------------------- */
+
+.menu .ico:hover{background:#000000;	color: #ffffff;		transition:0.5s;}
+/* -- L'action "hover" implique que, au passage de la souris, chaque icone du menu passe de texte noir sur fond transparent à texte blanc sur fond noir --------------------------------- */
+/* -- On retrouve dans "ico" et "ico:hover" l'action "transition" de 0.5 secondes pour donner un peu de fluidité et de dynamique au menu ------------------------------------------------ */
+
+.reseaux {position: relative; 	width: 250px; 	margin-left:auto; 	margin-right:auto; 	padding-top:12px; 	padding-bottom:8px; 	z-index:18;}
+/* -- designe le cadre des icones de reseaux sociaux qui fait 250pixels de large -------------------------------------------------------------------------------------------------------- */
+
+.resblock {display:inline-block;	width:50px;	margin-left:10px; margin-right:10px;}
+/* -- designe le cadre de chaque logo de reseau social ---------- "display:inline-block" aligne les trois logo qui, par défaut, iraient à la ligne -------------------------------------- */
+
+
+
+
+/* -- LE TITRE -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */	
+.titretchiki{position: fixed;	width:30%;	margin-top:0px;		margin-left:0px;	cursor:pointer;		z-index:18;}
+/* -- Commence à piger le truc : position fixe, largeur 30%, pas de marge pour etre par défaut dans le bord haut-gauche de l'écran ! "Z-index" pour qu'il soit au dessus du reste ------- */
+
+
+
+
+
+/* -- EFFETS DE FADE EN HAUT DE L'ECRAN ------------------------------------------------------------------------------------------------------------------------------------------------- */
+.fader{position: fixed; 	background: url("../tchiki/fade01.png");	width:100%;		height: 120px; 	z-index:13;}
+/* -- Dans cet élément fixe, "background:" n'appelle pas une couleur de fond mais une image de fond qui sera, par defaut, dupliquée pour occuper tout l'espace -------------------------- */
+/* -- L'image en question est un dégradé vertical entre le jaune tchiki et la transparence ---------------------------------------------------------------------------------------------- */
+/* -- N'ayant pas de "margin", cela signifie que cet élément est en haut de l'écran --- sa hauteur est de 120pixels --------------------------------------------------------------------- */
+/* -- En choisissant une superposition "z-index" de 13, cela signifie que notre élément sera derrière le titre et le bouton de menu mais devant le corps du site ------------------------ */
+/* -- Permettant ainsi de simuler un effet de fondu dans la navigation ------------------------------------------------------------------------------------------------------------------ */ 
+.fader2{position:relative;		background: url("../tchiki/fade02.png");	width:100%;		height: 120px;		z-index:13;}
+/* -- Designe l'effet de dégradé quand on arrive en bas du site ! Du coup il appelle une deuxieme image où le dégradé est inversé ------------------------------------------------------- */
+/* -- Contrairement au dégradé superieur qui est fixe, la position de ce dégradé de fin est relative au cadre ".contacteznous" qui est le dernier dans la mise en page du site ---------- */
+
+
+
+
+/* -- LE FOND PARALLAX ------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+#fondparalax {	width: 100%;	 margin-left: 0%;	overflow:hidden;	margin-bottom:0px;}
+/* -- Le fond parallax designe ce grand cadre qui occupe tout l'écran ou on trouve toutes les sections et la photo qui bouge en décalé -------------------------------------------------- */
+/* -- Rien à signaler sinon qu'il fait bien 100% de largeur et que, n'ayant pas d'attribut "z-index", il sera, par défaut positionné derrière le titre, le bouton, le menu, le player --- */
+
+.parallax-window {	width: 100%;    background: transparent;}
+
+
+/* -- LA SECTION BIOGRAPHIE ------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.bio{position : relative;	background: rgba(249, 187, 54, 0.6);	width : 100%;	margin-top:900px;	padding-top:20%;	padding-bottom:150px;}
+/* -- Designe le cadre de la biographie qui prend la taille de l'écran ------------------------------------------------------------------------------------------------------------------ */
+/* -- la marge superieure de 900 pixels permet de bien séparer la biographie de la photo d'accueil dans un mouvement ample -------------------------------------------------------------- */
+/* -- Pour que le fond reste en jaune tchikiswing mais en transparence, on applique à "background" un systeme de code couleur different du #002399 -------------------------------------- */
+/* -- là on utilise "rgba(rouge, vert, bleu, transparence entre 0 et 1)" ---------------------------------------------------------------------------------------------------------------- */
+
+.lapetitehistoire {position:relative;	width:100%;		padding-top: 20px;	padding-bottom:30px;	padding-left:15%;	padding-right:15%;	margin-left:auto;	margin-right:auto;
+					text-align: justify;	font-family: 'Reem Kufi', sans-serif;    letter-spacing: 3px;	color:#ffffff;		font-size: 1.1rem;	transition: 1s;}
+/* -- Designe le rectangle de texte de la biographie ------------------------------------------------------------------------------------------------------------------------------------ */
+
+.lapetitehistoire:hover {background:rgba(249, 187, 54, 0.7);  transition: 1s;}
+/* -- ":hover" signifie qu'au passage de la souris dans le cadre du texte de la biographie, un fond jaune tchiki avec une transparence de 0.7 apparaitra pour plus de lisibilité -------- */
+
+
+
+
+/* -- LA SECTION MEMBRES ---------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.members {position: relative; 	background :rgba(249, 187, 54, 0.8);	width:100%;		height:100%;	padding-left:10%;	padding-right:10%;	padding-top:100px;
+			font-family: 'Reem Kufi', sans-serif;	color:#ffffff;		font-size: 1.2rem}
+/* -- Designe le cadre de la section membre ! Contrairement aux autres cadres, la mise en page interne n'est pas à base de <div> mais de tableau HTML, il n'y donc rien de particulier -- */
+.membresmobile{display:none;}			
+/* -- Members est le cadre des biographies individuel pour l'affichage sur ordi ! ------------------------------------------------------------------------------------------------------- */
+/* -- "membresmobile" est le cadre adapté aux mobiles qui vient remplacer le premier quand on est sur téléphonoe, le cadre doit disparaitre avec la balise "display:none" --------------- */
+/* -- Du coup sur le CSS pour ordi, "membresmobile" ne doit pas apparaitre, on utilise alors la balise "display:none" ------------------------------------------------------------------- */		
+
+
+/* -- LA SECTION VIDEO ------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+.clips {position : relative;	background: rgba(249, 187, 54, 0.9);	width:100%;		height:1300px;	margin-top : 0px;	padding-left:23%;	padding-right:23%;}
+/* -- Designe le cadre générale de la section video qui doit faire la taille de l'écran ------------------------------------------------------------------------------------------------- */
+
+.cadreclip {position:relative;	width:100%;	height:50%;	margin-left:auto;	margin-right:auto;}
+/* -- Designe la taille de la video par rapport à son cadre ----------------------------------------------------------------------------------------------------------------------------- */	
+
+.videoWrapper {	position: relative; 	width: 100%;	margin-bottom: 5%;	padding-bottom: 56.25%; /* 16:9 */	padding-top: 25px;	height: 0;}
+.videoWrapper iframe {	position: absolute;	top: 25%;	left: 0;	width: 100%;	height: 100%;}
+/* -- Permet aux vidéos de s'adapter à la resolution de l'écran ou selon si le navigateur est en plein ecran ou pas --------------------------------------------------------------------- */
+
+
+
+
+/* -- LA SECTION AGENDA ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.agenda {position:fixed;	width:100%;		height:900px;	padding-left:20px;	padding-top:120px;	background: rgba(255, 255, 255, 0.9);	font-family: 'Reem Kufi', sans-serif; 	z-index:14;}
+/* -- "agenda" est un cadre qui n'est pas dans le parallax mais un élément fixe qui vient se situer au dessus avec son "z-index" de 14 -------------------------------------------------- */
+/* -- Par défaut, il n'apparait pas sauf si on clique sur son icone concernée dans le menu ---------------------------------------------------------------------------------------------- */
+
+.cadreagenda{position:relative;		float:right;	width:460px;	height:500px;}
+/* -- Designe le cadre specifique de l'agenda d'une largeur de 460px et d'une hauteur de 500px; "float:right" pour que ce cadre soit à la droite de l'écran ----------------------------- */
+
+.date {display:inline-block;	font-family: 'Passion One', cursive; 	font-size:1.5rem}
+/* -- Designe le cadre de la date et de la ville de chaque date, la police est differente et sa taille est plus grosse ------------------------------------------------------------------ */
+
+h1{font-family: 'Reem Kufi', sans-serif;	font-style: italic; 	color:#000000; 		font-size:1rem;		z-index:9;}
+/* -- Designe la sous description de chaque date ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+/* -- LA SECTION CONTACT ---------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.contacteznous{position :relative;	background: rgba(249, 187, 54, 0.9);	width:100%;		color:#000;		padding-left:7%;	padding-bottom:0px;		
+				font-family: 'Reem Kufi', sans-serif;	font-size:1.2rem;}
+/* -- Maintenant je crois qu'on a tout dit d'important sur le CSS :) -------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* -- LE LECTEUR AUDIO ------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+.lecteur {position:fixed; 	width:100%; 	height:50px; 	z-index:100; 	bottom:-20px;	padding-left:70%;   transition: 0.5s;}
+/* -- Ainsi, ceci est une fine bande sans fond qui prend la largeur de l'écran pour une hauteur de 50pixel. ----------------------------------------------------------------------------- */
+/* -- "bottom" designe, pour les éléments fixes, la distance du bas de l'écran ! J'aurais du la mettre à 0, mais le lecteur a un copyright disgratieux que je volais cacher ------------- */
+/* -- du coup, j'ai appliqué une valeur négative de -20 à "bottom" pour que la mention soit "en dessous de l'écran" et donc invisible --------------------------------------------------- */
+
+.lecteur:hover {	background-color:#000000;  transition: 0.5s;}
+/* -- Fait apparaitre la bande noire au passage de la souris ---------------------------------------------------------------------------------------------------------------------------- */
+
+#amazingaudioplayer-1 {box-sizing: content-box;		z-index:100;}
+
+#amazingaudioplayer-1 div {	-webkit-box-sizing: content-box;	-moz-box-sizing: content-box;	box-sizing: content-box;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-image {display: block;	position: relative;	float: left;	margin: 4px;	overflow: hidden;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-image-clear {}
+
+#amazingaudioplayer-1 .amazingaudioplayer-text {display: block;	position: relative;	overflow: hidden;	padding: 4px 12px;	height: auto;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-text-clear {clear: both;	height: 8px;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-title {display: block;	color: #000;	font-family: "Oswald",Arial,sans-serif;	font-size: 20px;	font-weight: bold;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-title-clear {}
+
+#amazingaudioplayer-1 .amazingaudioplayer-info {display: block;	color: #000;	font-family: Arial, sans-serif;	font-size: 12px;	font-style: italic;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-info-clear {}
+
+#amazingaudioplayer-1 .amazingaudioplayer-bar {margin: 4px;	z-index:100;	border: 1px solid rgba(0,0,0,0);}
+
+#amazingaudioplayer-1 .amazingaudioplayer-bar-buttons-clear {clear: both;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-bar-clear {}
+
+#amazingaudioplayer-1 .amazingaudioplayer-bar-title {position: relative;	float: left;	color: #fff;	font-family: "Open Sans", sans-serif;	font-size: 12px;	line-height: 24px;	margin: 0 8px;
+}
+
+#amazingaudioplayer-1 .amazingaudioplayer-playpause {position: relative;	float: left;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-play {position: relative;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-pause {position: relative;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-stop {position: relative;	float: left;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-prev {position: relative;float: left;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-next {position: relative;	float: left;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-loop {position: relative;	float: left;	margin: 0 2px;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-progress {position: relative;	background-color: #000;	margin: 8px 4px;	-webkit-border-radius: 4px;	-moz-border-radius: 4px;	border-radius: 4px;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-progress-loaded {background-color: #fff;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-progress-played {-webkit-border-radius: 4px;	-moz-border-radius: 4px;	border-radius: 4px;	background-color: #000;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-time {position: relative;	float: right;	color: #fff;	font-family: "Open Sans", sans-serif;	font-size: 12px;	line-height: 24px;	margin: 0 4px;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-volume {position: relative;	float: right;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-volume-bar {background-color: #000;	border: none;	-webkit-border-radius: 4px;	-moz-border-radius: 4px;	border-radius: 4px;}
+
+#amazingaudioplayer-1 .amazingaudioplayer-volume-bar-adjust {background-color: #222;
+																-webkit-box-shadow: -1px -1px 0 rgba( 0, 0, 0, 0.5 ), 1px 1px 0 rgba( 255, 255, 255, 0.1 );
+																-moz-box-shadow: -1px -1px 0 rgba( 0, 0, 0, 0.5 ), 1px 1px 0 rgba( 255, 255, 255, 0.1 );
+																box-shadow: -1px -1px 0 rgba( 0, 0, 0, 0.5 ), 1px 1px 0 rgba( 255, 255, 255, 0.1 );
+															}
+
+#amazingaudioplayer-1 .amazingaudioplayer-volume-bar-adjust-active {background-color: #fff;
+																		-webkit-box-shadow: inset 0 0 5px rgba( 255, 255, 255, 0.5 );
+																		-moz-box-shadow: inset 0 0 5px rgba( 255, 255, 255, 0.5 );
+																		box-shadow: inset 0 0 5px rgba( 255, 255, 255, 0.5 );
+																	}
+
+
+
+
+

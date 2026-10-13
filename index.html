@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<!--
+  Theme: The great jazzy mustard
+  Author: alexKananga
+  Date: 10-09-2019
+  Last update: 10-09-2019
+-->
+
+<!-- On commence ici ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<html lang="en">
+
+
+
+<!-- CERVEAU DU SITE - dans la section <head></head> se trouvent d'abord les infos pour les moteurs de recherche puis les liens vers tous les programmes externes necessaires au fonctionnement ->
+du site - enfin, on y met les lignes de programme java internes <script></script> qui rendent le site dynamique --------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<head>
+							<meta charset="UTF-8" />
+							<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<!-- titre ----------------><title>TCHIKISWING - Gipsy & American Jazz</title>
+							<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+<!-- description google ---><meta name="description" content="Découvrez le répertoire swing et jazz manouche de ce quartet originaire de Toulouse qui enchantera aussi bien les passionnés de jazz que les danseurs. En concert sur les scènes de Toulouse et d'ailleurs, il vous propose leur univers musical dans la tradition de Django Reinhardt">
+							<meta name="author" content="adraft">
+<!-- icone onglet ---------><link rel="icon" type="image/png" href="tchiki/icone.png" />
+<!-- lien vers le css -----><link rel="stylesheet" href="css/style.css">
+<!-- css pour mobile ------><link rel="stylesheet" media="screen and (max-width: 800px)" href="css/mobile.css" />
+							<!-- si la résolution de l'écran passe à moins de 800px, le site change de mise en page -->
+<!-- css de la scrollbar --><link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css">
+							<!-- la barre de scroll n'est utilisée que pour faire defiler les dates dans la section agenda -->
+<!-- police paragraphes ---><link href="https://fonts.googleapis.com/css?family=Reem+Kufi&display=swap" rel="stylesheet">
+<!-- police titres --------><link href="https://fonts.googleapis.com/css?family=Passion+One&display=swap" rel="stylesheet">
+<!-- jquery player mp3 ----><script src="audioplayerengine/jquery.js"></script>
+							<script src="audioplayerengine/amazingaudioplayer.js"></script>
+<!-- CSS du player mp3 ----><link rel="stylesheet" type="text/css" href="audioplayerengine/initaudioplayer-1.css">
+							<script src="audioplayerengine/initaudioplayer-1.js"></script>
+<!-- appel le jquery ------><script src="js/jquery.vide.min.js"></script>
+<!-- appel le parallax ----><script type="text/javascript" src="js/parallax.js"></script>
+							<script type="text/javascript" src="js/jquery.bxslider.js"></script>	
+<!-- appel la scrollbar ---><script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script><!--scrollbarz-->
+							<script src="js/swfobject.js"></script>
+		
+<!-- Javascript pour la vitesse de défilement, le parallax et les fonctions des boutous --- Pas touche !!! -------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<script>
+	$(window).scroll(function() {
+		$('#animatedElement').each(function(){
+		var imagePos = $(this).offset().top;
+
+		var topOfWindow = $(window).scrollTop();
+			if (imagePos < topOfWindow+400) {
+				$(this).addClass("slideUp");
+			}
+		});
+	});
+</script>
+<noscript>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- SMOOTH SCROLLING -->
+	<script>
+	$(document).ready(function(){
+	  // Add smooth scrolling to all links
+	  $("a").on('click', function(event) {
+
+		// Make sure this.hash has a value before overriding default behavior
+		if (this.hash !== "") {
+		  // Prevent default anchor click behavior
+		  event.preventDefault();
+
+		  // Store hash
+		  var hash = this.hash;
+
+		  // Using jQuery's animate() method to add smooth page scroll
+		  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+		  $('html, body').animate({
+			scrollTop: $(hash).offset().top
+		  }, 15000, function(){
+	   
+			// Add hash (#) to URL when done scrolling (default click behavior)
+			window.location.hash = hash;
+		  });
+		} // End if
+	  });
+	});
+</script>
+	@media screen and (max-width: 715px) {
+		.content-scroller {
+			overflow:visible;
+		}
+	}
+</style>
+</noscript>
+<script>
+	$(document).ready(function() {
+		$('.js-scrollTo').on('click', function() { // Au clic sur un élément
+			var page = $(this).attr('href'); // Page cible
+			var speed = 1500; // Durée de l'animation (en ms)
+			easing: 500;
+			$('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+			return false;
+		});
+	});
+</script>
+<script> 
+$(document).ready(function(){
+	$(".agenda").hide();
+	$(".fondmenu").hide();
+	
+	
+	$(".datebutton").click(function(){
+        $(".agenda").slideToggle("slow");
+    });
+	
+	$(".boutonmenu").click(function(){
+        $(".fondmenu").fadeToggle("slow");
+    });
+	$(".trt").click(function(){
+        $(".fondmenu").fadeToggle("slow");
+    });
+	$(".bouton").click(function(){
+        $(".fondmenu").fadeToggle("slow");
+    });
+
+	$(document).mouseup(function(e){
+    var container = $(".agenda");
+    if(!container.is(e.target) && container.has(e.target).length === 0){
+        container.fadeOut("slow");
+    }
+	});
+});
+</script>
+<!-- FIN DU JAVASCRIPT -------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+</head>
+<!-- FIN DU CERVEAU DU SITE --------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->	
+
+
+
+
+
+
+
+
+<!-- CORPS DU SITE - Dans la section <body></body> se trouvent tous les éléments visibles du site ----------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<body>
+<div id="content">
+
+<!-- ELEMENTS FIXES ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- TITRE ------------><div class="titretchiki"><center><img src="tchiki/tchikilogo.png"></center></div>
+<!-- EFFET FADE ------->
+
+<!-- AGENDA -----------><div class="agenda">
+							<div class="cadreagenda mCustomScrollbar">
+							<!-- Copier coller la ligne de code pour ajouter une date et juste changer le texte ---------------------->
+						
+ 								<div class="date">21/11/26 </div><br><b>- "St Felix Lauraguais"(31)<br>Concert Privé TRIO<br>
+								<div class="date">31/10/26 </div><br><b>- "Colomiers"(31)<br>Concert Privé TRIO<br>
+								<div class="date">11/10/26 </div><br><b>- "REVEL"(31)<br><b>Concert QTET</b><br>
+								<div class="date">19/09/26 </div><br><b>- "PLAISANCE DU TOUCH"(31)<br>Concert Privé QTET<br>
+								<div class="date">22/08/26 </div><br><b>- "FROUZINS"(31)<br><b>Concert TRIO</b><br>
+								<div class="date">19/08/26 </div><br><b>- "CONDOM"(32)<br><b>Concert QTET</b><br>
+								<div class="date">13/07/26 </div><br><b>- "ROMAGNE"(33)<br>Concert Privé DUO<br>
+								<div class="date">11/07/26 </div><br><b>- "MOULEZAN"(30)<br>Concert Privé QTET<br>
+								<div class="date">02/07/26 </div><br><b>- "TOULOUSE"(31)<br>Concert Privé QTET<br>
+								<div class="date">25/06/26 </div><br><b>- "TOULOUSE"(31)<br><b>Concert QTET</b><br>
+								<div class="date">20/06/26 </div><br><b>- "LAGARDE"(09)<br>Concert Privé Trio<br>
+								<div class="date">18/06/26 </div><br><b>- "TOULOUSE"(31)<br><b>Concert Trio</b><br>
+								<div class="date">09/06/26 </div><br><b>- "TOULOUSE"(31)<br><b>Concert QTET</b><br>
+								<div class="date">17/05/26 </div><br><b>- "TOULOUSE"(31)<br><b>Concert DUO</b><br>
+								<div class="date">25/04/26 </div><br><b>- "BONREPOS RIQUET"(31)<br>Concert privé Trio<br>
+								<div class="date">04/02/26 </div><br><b>- "TOULOUSE"(31)<br><b>Concert QTET</b><br>
+								<div class="date">01/02/26 </div><br><b>- "AGEN"(47)<br><b>Concert QTET</b><br>
+								<div class="date">16/01/26 </div><br><b>- "LABEGE"(31)<br>Concert Privé DUO<br>
+								<div class="date">13/12/25 </div><br><b>- "MONTAUBAN"(82)<br>Concert privé DUO<br>
+								<div class="date">04/10/25 </div><br><b>- "GAMBAIS"(78)<br><b>Concert QTET</b><br>
+								<div class="date">14/09/25 </div><br><b>- "AGEN"(46)<br><b>Concert QTET</b><br>
+								<div class="date">30/08/25 </div><br><b>- "Marquefave"(31)<br>Concert Privé TRIO<br>
+								<div class="date">29/07/25 </div><br><b>- "MINERVE"(34)<br><b>Concert QTET</b><br>
+								<div class="date">17/07/25 </div><br><b>- "PUYMIROL"(47)<br><b>Concert QTET</b><br>
+								<div class="date">13/07/25 </div><br><b>- "TOURNEFEUILLE"(31)<br><b>Concert QTET</b><br>
+								<div class="date">01/07/25 </div><br><b>- "Carry-Le-Rouet"(13)<br><b>Concert QTET</b><br>
+								<div class="date">14/06/25 </div><br><b>- "Saint-sulpice-la-pointe"(81)<br>Concert Privé TRIO<br>
+								<div class="date">27/05/25 </div><br><b>- "Brousse & villaret"(11)<br><b>Concert TRIO</b><br>
+								<div class="date">16/03/25 </div><br><b>- "REVEL(31)<br><b>Concert QTET</b><br>
+								
+
+
+
+
+
+
+
+
+
+
+							</div>
+						</div>
+						
+<!-- BOUTON MENU ------><div class="boutonmenu"><img src="tchiki/menu.png"></div>
+<!-- MENU -------------><div class="fondmenu">
+							<div class="menu"><CENTER>
+								<div class="ico"><a class="js-scrollTo" href="#section_home"><div class="bouton"><b>Home</b></div></a></div>
+								<div class="ico"><a class="js-scrollTo" href="#section_bio"><div class="bouton biobutton"><b>Biographie</b></div></a></div>
+								<div class="ico"><a class="js-scrollTo" href="#section_membres"><div class="bouton audiobutton"><b>Membres</b></div></a></div>
+								<div class="ico"><a class="js-scrollTo" href="#section_video"><div class="bouton videobutton"><b>Video</b></div></a></div>
+								<div class="ico"><a class="js-scrollTo" href="#section_dates"><div class="bouton datebutton"><b>Agenda</b></div></a></div>
+								<div class="ico"><a class="js-scrollTo" href="#section_contact"><div class="bouton"><b>Contact/Pro</b></div></a></div></CENTER>
+								<div class="reseaux"><center>
+									<a href="https://www.facebook.com/TchikiSwing/" target="blank"><div class="resblock"><img src="tchiki/reso01.png"></div></a>
+									<a href="https://www.youtube.com/channel/UCg_OsQ3h1Vqk6VqxkPlrBBg" target="blank"><div class="resblock"><img src="tchiki/reso03.png"></div></a>
+									<a href="mailto:tchikiswing@gmail.com" target="blank"><div class="resblock"><img src="tchiki/reso02.png"></div></a>
+								</center></div>
+							</div>
+						</div>
+
+<!-- LECTEUR AUDIO ----><div class="lecteur">
+							<div id="amazingaudioplayer-1" style="display:block;position:relative;width:100%;height:auto;margin:0px auto 0px;">
+								<ul class="amazingaudioplayer-audios" style="display:none;">
+									<li data-artist="Tchikiswing" data-title="Some of These Days" data-album="" data-info="" data-image="" >
+										<div class="amazingaudioplayer-source" data-src="audios/someofthesedays.mp3" data-type="audio/mpeg" ></div>
+									</li>
+									<li data-artist="Tchikiswing" data-title="Double Jeu" data-album="" data-info="" data-image="" >
+										<div class="amazingaudioplayer-source" data-src="audios/doublejeu.mp3" data-type="audio/mpeg" ></div>
+									</li>
+									<li data-artist="Tchikiswing" data-title="My Blue Heaven" data-album="" data-info="" data-image="" >
+										<div class="amazingaudioplayer-source" data-src="audios/blueheaven.mp3" data-type="audio/mpeg" ></div>
+									</li>
+									<li data-artist="Tchikiswing" data-title="Keep it Moovin" data-album="" data-info="" data-image="" >
+										<div class="amazingaudioplayer-source" data-src="audios/keepit.mp3" data-type="audio/mpeg" ></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						
+						
+<!-- CONTENU DEFILANT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- FOND PARALAX -----><div id="fondparalax" class="parallax-window" data-parallax="scroll" data-image-src="tchiki/tchikifond04.jpg">
+<!-- ACCUEIL ----------><section id="section_home"></section>
+<!-- PHOTO FOND MOBIL--><div class="photomobile"><img src="tchiki/fondmobile2.jpg"></div>
+<!-- BIOGRAPHIE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+		<section id="section_bio">	
+			<div class="bio">
+				<div class="lapetitehistoire">
+						<b>Tchikiswing</b> vous propose un voyage dans les années 50 pour retrouver le temps d’un concert, l’ambiance des clubs de jazz parisiens de Saint-Germain-Des-Prés.<br>
+						C’est un hommage aux musiciens de génie, créateurs d’un son unique et de mélodies intemporelles que ce groupe a choisi de vous offrir.<br><br>
+						Au répertoire : Django Reinhardt et les grands noms du jazz, Count Basie, Gerry Mulligan, Tadd Dameron<br>
+						Mais aussi des musiciens contemporains tels que Romane, Angelo Debarre, Stochelo Rosenberg...<br><br>
+						Guitares : <i>Paul Beuillé & Pierre Bectard</i><br>
+						Clarinette : <i>Clément Salles</i><br>
+						Contrebasse : <i>Fabrice Renailler</i><br>
+
+						<!-- modifiable à volonté -->
+						<!-- pour aller à la ligne, utiliser la balise <br> -->
+						<!-- pour passer en italique, entourer la zone de texte choisie des balises <i> et </i> -->
+						<!-- pour passer en gras, entourer la zone de texte choisie des balises <b> et </b> -->
+					</div>
+			</div>
+		</section>
+	
+<!-- MEMBRES ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+		<section id="section_membres">
+			<div class="members">
+				<table cellspacing="15">
+					<tr>
+						<td width="30%"><img src="tchiki/paul01.png" align="#top"></td>
+						<td width="66%">Paul Beuillé​<br>
+							Guitariste soliste et fondateur du groupe, c'est à l'age de 11 ans que Paul BEUILLE découvre la Guitare qui sera son instrument de prédilection.<br>
+							L'apprentissage de la musique se fera en autodidacte à la decouverte du repertoire de <b>Django.R</b> et au contact de nombreux amis musiciens Toulousains.
+							Puis, deux années d'études à la <i>Music Halle</i> où il suit les cours de Thierry Di Fillipo. Il se consacrera dés lors au swing et au jazz manouche.<br>
+							L'experience de la scene commence en 2008. C'est lors d'une master-class de Samy DAUSSAT qu'il rencontre les futurs membres de <i>Tchikipomp</i> qui vois le
+							jour en 2012. En 2016 la formation évolue pour se professionnaliser et devenir <i>TchikiSwing</i>.<br>
+							Il participe à plusieurs formations musicales (SHADU, Martin's Jazz Band, Amoul Solo, etc...) mais c'est avec la rencontre ou à l'écoute de musiciens comme Romane, 
+							Bireli Lagrenne, Stochelo Rosenberg ou plus recement Adrien Moignard, ainsi que nombreux jazzmans americains que son jeu se developpe. Plus récemment, 
+							il rejoint le groupe <i>La tribu de Bergame</i>.
+						</td>
+					</tr>
+				</table>
+				<table cellspacing="15">
+					<tr>
+						<td width="66%">Clément Salles<br>
+							Il débute la clarinette au CNR de Toulouse à l’âge de 7 ans.<br>
+							Il découvre la pratique du Jazz Manouche en Angleterre au cours d’une formation de luthier, et en profite pour participer à la formation du groupe 
+							<i>Swing 1664</i> qui écume pubs et festivals des Midlands pendant 4 années.<br>
+							Il retourne à Toulouse et passe sa Licence en Musicologie Jazz, intègre «Les Vents Malins» et «Kassla Datcha», et débute l’apprentissage du saxophone.
+							Il fonde ensuite le groupe « Sheik of Swing », toujours en activité avec de très nombreux concerts en France et à l’étranger.<br>
+							Plus récemment, il participe à la création du quintet balkan/jazz <i>Nuit Nomade</i>, rejoint le groupe <i>Endvatchei</i>, et collabore avec diverses 
+							formations musicales toulousaines (Pulse, Les Tires Bouchons, Sandrine Cabadi, J’ai rdv avec vous, Nomad Frequencies…)et internationale.</td>
+						<td width="30%"><img src="tchiki/clem01.png" align="#top"></td>
+					</tr>	
+				</table>
+				<table cellspacing="15">
+					<tr>
+						<td width="30%"><img src="tchiki/fab01.png" align="#top"></td>
+						<td width="66%">Fabrice Renailler<br>
+							Venu de la basse électrique qu'il découvre vers 20 ans, Fabrice débute sur scène dans les bals et fêtes de village du sud-ouest de la France.<br>
+							Autodidacte et polyvalent, il part sur les routes basse et ampli sur le dos, et joue dans de nombreuses formations du Mali au Pérou, jusqu'en Argentine ou
+							il suit une année de formation aux musiques actuelles à l'ITMC de Buenos Aires. Rock, funk, musiques latines, jazz manouche, il développe et enrichie son 
+							jeu en se mettant au service du morceau, de ses collègues rythmiciens ou solistes.<br>
+							Passionné du swing qui fait danser, vous pouvez aussi le retrouver sur scène avec le quintet rock déluré <i>Tiger Tutu</i>, le groupe de soul funk 
+							<i>Sugar Bones</i> ou les formations du Chili ou d'ailleurs croisées sur son chemin.
+						</td>
+					</tr>
+				</table>
+				<table cellspacing="15">
+					<tr>
+						<td width="66%">Pierre Bectard-Huëber<br>
+							Guitariste seine-et-marnais installé à Toulouse, passionné de swing et de jazz manouche, il commence la basse électrique à 11 ans.<br>
+							Il se tourne vers la guitare acoustique à 16 ans après avoir découvert ce style à Paris, notamment à La Chope des Puces et au Jazz des Tuileries.<br>
+							Il poursuit son apprentissage en se concentrant sur l’accompagnement, inspiré par des guitaristes comme Hono Winterstein, Nous’che Rosenberg et Mathieu Chatelain.<br>
+							Depuis 2013, il réalise de nombreux remplacements au sein de formations parisiennes et de la région, et accompagne des musiciens reconnus tels que Daniel John Martin, Tatiana Eva-Marie, Mayo Hubert et d’autres.<br>
+						</td>
+						<td width="30%"><img src="tchiki/ludo01.png" align="#top"></td>
+					</tr>	
+				</table>
+			</div>
+<!-- SECTION MEMBRES POUR MOBILE - pour des questions de mise en page j'ai du faire 2 versions de la section ---------------------------------------------------------------------------------->	
+			<div class="membresmobile">
+						<div class="cadrage">
+							<center><img src="tchiki/paul01.png" align="#top"></center>
+							Paul Beuillé​<br>
+							Guitariste soliste et fondateur du groupe, c'est à l'age de 11 ans que Paul BEUILLE découvre la Guitare qui sera son instrument de prédilection.<br>
+							L'apprentissage de la musique se fera en autodidacte à la decouverte du repertoire de <b>Django.R</b> et au contact de nombreux amis musiciens Toulousains.
+							Puis, deux années d'études à la <i>Music Halle</i> où il suit les cours de Thierry Di Fillipo. Il se consacrera dés lors au swing et au jazz manouche.<br>
+							L'experience de la scene commence en 2008. C'est lors d'une master-class de Samy DAUSSAT qu'il rencontre les futurs membres de <i>Tchikipomp</i> qui vois le
+							jour en 2012. En 2016 la formation évolue pour se professionnaliser et devenir <i>TchikiSwing</i>.<br>
+							Il participe à plusieurs formations musicales (SHADU, Martin's Jazz Band, Amoul solo, etc...) mais c'est avec la rencontre ou à l'écoute de musiciens comme Romane, 
+							Bireli Lagrenne, Stochelo Rosenberg ou plus recement Adrien Moignard, ainsi que nombreux jazzmans americains que son jeu se developpe. Plus récemment, 
+							il rejoint le groupe <i>La Tribu de Bergame</i>.
+							<center><img src="tchiki/clem01.png" align="#top"></center>						
+							Clément Salles<br>
+							Clément débute la clarinette au CNR de Toulouse à l’âge de 7 ans.<br>
+							Il découvre la pratique du Jazz Manouche en Angleterre au cours d’une formation de luthier, et en profite pour participer à la formation du groupe 
+							<i>Swing 1664</i> qui écume pubs et festivals des Midlands pendant 4 années.<br>
+							Il retourne à Toulouse et passe sa Licence en Musicologie Jazz, intègre «Les Vents Malins» et «Kassla Datcha», et débute l’apprentissage du saxophone. 
+							Plus récemment, il participe à la création du quintet balkan/jazz <i>Nuit Nomade</i>, rejoint le groupe <i>Endvatchei</i>, et collabore avec diverses 
+							formations musicales toulousaines (Pulse, Les Tires Bouchons, Sandrine Cabadi, J’ai rdv avec vous, Nomad Frequencies…).
+							<center><img src="tchiki/fab01.png" align="#top"></center>
+							Fabrice Renailler<br>
+							Venu de la basse électrique qu'il découvre vers 20 ans, Fabrice débute sur scène dans les bals et fêtes de village du sud-ouest de la France.<br>
+							Autodidacte et polyvalent, il part sur les routes basse et ampli sur le dos, et joue dans de nombreuses formations du Mali au Pérou, jusqu'en Argentine ou
+							il suit une année de formation aux musiques actuelles à l'ITMC de Buenos Aires. Rock, funk, musiques latines, jazz manouche, il développe et enrichie son 
+							jeu en se mettant au service du morceau, de ses collègues rythmiciens ou solistes.<br>
+							Passionné du swing qui fait danser, vous pouvez aussi le retrouver sur scène avec le quintet rock déluré <i>Ginger Spanking</i>, le groupe de soul funk 
+							<i>Sugar Bones</i> ou les formations du Chili ou d'ailleurs croisées sur son chemin.
+							<center><img src="tchiki/ludo01.png" align="#top"></center><br>					
+							Pierre Bectard-Huëber<br>
+							Guitariste seine-et-marnais installé à Toulouse, passionné de swing et de jazz manouche, il commence la basse électrique à 11 ans.<br>
+							Il se tourne vers la guitare acoustique à 16 ans après avoir découvert ce style à Paris, notamment à La Chope des Puces et au Jazz des Tuileries.<br>
+							Il poursuit son apprentissage en se concentrant sur l’accompagnement, inspiré par des guitaristes comme Hono Winterstein, Nous’che Rosenberg et Mathieu Chatelain.<br>
+							Depuis 2013, il réalise de nombreux remplacements au sein de formations parisiennes et de la région, et accompagne des musiciens reconnus tels que Daniel John Martin, Tatiana Eva-Marie, Mayo Hubert et d’autres.<br>
+						</div>
+
+			</div>
+		</section>
+		
+<!-- VIDEO -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+		<section id="section_video">
+			<div class="clips">
+<!-- BALISE CLIP -->
+				<div class="cadreclip">
+				<center><div class="videoWrapper">
+				<iframe width="700" height="550" src="https://www.youtube.com/embed/mBESBg7NLoE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></center>
+				</div>
+				
+				<div class="cadreclip">
+				<center><div class="videoWrapper">
+				<iframe width="700" height="550" src="https://www.youtube.com/embed/2zgm61U7VnY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></center>
+				</div>
+				
+				<div class="cadreclip">
+				<center><div class="videoWrapper">
+				<iframe width="700" height="550" src="https://www.youtube.com/embed/lew-3pb2hlQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></center>
+				</div>
+				
+				<div class="cadreclip">
+				<center><div class="videoWrapper">
+				<iframe width="700" height="550" src="https://www.youtube.com/embed/TCP6asbdXTk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></center>
+				</div>
+				
+
+				
+				
+			</div>
+		</section>
+		
+<!-- CONTACT ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+		<section id="section_contact">
+			<div class="contacteznous"><br><br>
+						<b>Contact Booking - Technique :</b><br>
+						Paul : (+33)6.07.39.97.34<br>
+						Fabrice : (+33)6.75.77.45.61<br>
+						<A HREF="mailto:tchikiswing@gmail.com">tchikiswing@gmail.com</A><br><br>
+						<b>Téléchargements :</b>
+						<A HREF="plan de scene + fiche tech tchikiswing Qtet 2026.pdf" target="_blank">Fiche technique / Plan de scène</A><br>
+						<div class="fader2"></div>
+			</div>
+		</section>
+
+<!-- FIN DU FOND PARALAX --></div>	
+
+<!-- FIN DU CONTENU DEFILANT--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<script src="js/main2.js"></script><!-- je sais pas à quoi ça sert mais on efface pas :)-->
+	
+
+<!-- FIN DU CORPS DU SITE -->
+ </body>
+	
+<!-- FIN DU SITE -->	
+</html>

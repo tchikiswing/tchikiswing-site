@@ -1,0 +1,4 @@
+Nom d'hôte (serveur FTP) : ftp.cluster020.hosting.ovh.net
+Identifiant (login FTP) : tchikiswji
+Mot de passe (password FTP) : 23sH7xsjB5nY
+Port : 21
